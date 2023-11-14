@@ -332,6 +332,7 @@ void getDump(struct pdbg_target *proc, const uint8_t type, const uint8_t clock,
 	if (!isTgtPresent(proc)) {
 		log(level::ERROR, "getDump(%s) Target is not present",
 		    pdbg_target_path(proc));
+		throw pdbgError_t(exception::PDBG_TARGET_NOT_FOUND);
 	}
 	// SBE halt state need recovery before dump chip-ops
 	sbeHaltStateRecovery(proc);
